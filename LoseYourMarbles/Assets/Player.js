@@ -22,7 +22,12 @@ function PreShoot()
 
         if(hit.gameObject.tag == "SHOOT")
         {
-            Shooting();
+            
+            if(touch.phase == TouchPhase.Ended)
+            {
+                Shooting();
+                manager.GetComponent(Tester).Display("SHOOTING ACTIVATED");
+            }
         }   
     }
 }
