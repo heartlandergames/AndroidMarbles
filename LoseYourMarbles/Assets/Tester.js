@@ -46,6 +46,13 @@ function Update () {
 
 function ShootMode()
 {
-    preShootUI.SetActive(false);
-    shootUI.SetActive(true);
+    preShootUI.SetActive(!preShootUI);
+    shootUI.SetActive(!shootUI);
+}
+
+function Display(s:String)
+{
+    text.text = s;
+    textParent.SetActive(true);
+    return;
 }
