@@ -22,8 +22,28 @@ function PreShoot()
 
         if(hit.gameObject.tag == "SHOOT")
         {
-            shooting = true;
-            manager.GetComponent(Tester).ShootMode();
-        }
+            Shooting();
+        }   
+    }
+}
+
+function Shooting()
+{
+    //Deactivates/Reactivates the proper scripts
+    if(!shooting)
+    {
+        gameObject.GetComponent(PlayerMovement).enabled = false;
+        gameObject.GetComponent(PlayerShoot).enabled = true;
+        gameObject.GetComponent(PlayerLook).enabled = true;
+        shooting = true;
+        return;
+    }
+    if(shooting)
+    {
+        gameObject.GetComponent(PlayerShoot).enabled = false;
+        gameObject.GetComponent(PlayerMovement).enabled = true;
+        gameObject.GetComponent(PlayerLook).enabled = true;
+        shooting = false;
+        return;
     }
 }
