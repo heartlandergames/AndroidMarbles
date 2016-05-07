@@ -3,24 +3,54 @@
 
 var power : float;
 
+var maxPower : float;
+
 var startPos : Vector2;
 
 var endPos : Vector2;
 
+
+var chargeRate : float;
+
+var charging : boolean;
+
+var chargeUp : boolean = true;
 
 function Start () {
 
 }
 
 function Update () {
-   
+    if(charging)
+    {
+        ChargePower();
+    }
 
 }
 
 
 function ChargePower()
 {
-    
+    if(chargeUp)
+    {
+        power += Time.deltaTime * chargeRate;
+    }
+    if(!chargeUp)
+    {
+        power-= Time.deltaTime * chargeRate;
+    }
+
+    if(power >= maxPower)
+    {
+        power = maxPower;
+        chargeUp = false;
+
+    }
+    if(power <= 0)
+    {
+        power = 0;
+        chargeUp = true;
+    }
 }
 
 function Shoot()
