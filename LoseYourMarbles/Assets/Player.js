@@ -4,6 +4,9 @@ var manager : GameObject;
 
 var shooting : boolean;
 
+
+
+
 function Start () {
     manager = GameObject.FindWithTag("MANAGER");
 }
@@ -25,21 +28,21 @@ function PreShoot()
             
             if(touch.phase == TouchPhase.Ended)
             {
-                Shooting();
+                ShootSetup();
                 manager.GetComponent(Tester).Display("SHOOTING ACTIVATED");
             }
         }   
     }
 }
 
-function Shooting()
+function ShootSetup()
 {
     //Deactivates/Reactivates the proper scripts
     if(!shooting)
     {
         gameObject.GetComponent(PlayerMovement).enabled = false;
         gameObject.GetComponent(PlayerShoot).enabled = true;
-        gameObject.GetComponent(PlayerLook).enabled = true;
+        gameObject.GetComponent(PlayerLook).enabled = false;
         shooting = true;
         return;
     }
@@ -52,3 +55,4 @@ function Shooting()
         return;
     }
 }
+

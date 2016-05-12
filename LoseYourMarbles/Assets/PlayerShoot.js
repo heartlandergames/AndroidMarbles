@@ -1,5 +1,6 @@
 ﻿#pragma strict
 
+var manager : GameObject;
 
 var power : float;
 
@@ -17,15 +18,32 @@ var charging : boolean;
 var chargeUp : boolean = true;
 
 function Start () {
-
+    manager = gameObject.FindWithTag("MANAGER");
 }
-
+/*
 function Update () {
+    if(!charging)
+    {
+        if(Input.GetTouch(0).phase == TouchPhase.Began)
+        {   
+            charging = true;
+            
+            
+        }
+    }
+
+
     if(charging)
     {
         ChargePower();
     }
 
+
+    if(!charging && power > 0)
+    {
+        Shoot();
+    }
+   
 }
 
 
@@ -51,6 +69,13 @@ function ChargePower()
         power = 0;
         chargeUp = true;
     }
+
+    if(Input.GetTouch(0).phase == TouchPhase.Ended)
+    {
+        charging = false;
+    }
+    manager.GetComponent(Tester).Display("Power : "+ power);
+
 }
 
 function Shoot()
@@ -67,13 +92,37 @@ function Shoot()
         }
     }
 
-    if(startPos != null && endPos != null)
+    if(startPos != Vector2.zero && endPos != Vector2.zero)
     {
         var distX = endPos.x - startPos.x;
         var distY = endPos.y - startPos.y;
         var shooter : GameObject = Instantiate(Resources.Load("Prefabs/ShooterPrefab"), transform.position, transform.rotation);
 
         shooter.GetComponent(Rigidbody).AddForce(Vector3(distY, 0, distX), ForceMode.Impulse);
-        gameObject.GetComponent(Player).Shooting();
+        gameObject.GetComponent(Player).ShootSetup();
+    }
+}*/
+
+
+function Update()
+{
+    if(Input.touchCount >0 )
+    {
+        if(Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            startPos = Input.GetTouch(0).position;
+        }
+
+        if(Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            endPos = Input.GetTouch(0).position;
+        }
+
+        if(startPos.x > 0 && endPos.x > 0)
+        {
+            var shooter : GameObject = Instantiate(Resources.Load("Prefabs/ShooterPrefab"), transform.position, transform.rotation);
+            shooter.GetComponent(Rigidbody).AddForce(Vector3(endPos.x-startPos.x, 0, endPos.y - startPos.y), ForceMode.Impulse);
+            gameObject.GetComponent(Player).ShootSetup();
+        }
     }
 }
