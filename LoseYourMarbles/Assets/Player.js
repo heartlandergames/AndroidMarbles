@@ -4,11 +4,16 @@ var manager : GameObject;
 
 var shooting : boolean;
 
+var look : PlayerLook;
 
+var move : PlayerMovement;
 
 
 function Start () {
     manager = GameObject.FindWithTag("MANAGER");
+    look = gameObject.GetComponent(PlayerLook);
+    move = gameObject.GetComponent(PlayerMovement);
+    manager.GetComponent(Tester).player = this;
 }
 
 function Update () {
@@ -33,6 +38,16 @@ function PreShoot()
             }
         }   
     }
+
+    if(Input.GetButtonDown("Fire1"))
+    {
+        var mouseHit : Collider2D = Physics2D.OverlapPoint(Input.mousePosition);
+        if(mouseHit.gameObject.tag=="SHOOT")
+        {
+            ShootSetup();
+            
+        }
+    }
 }
 
 function ShootSetup()
@@ -40,18 +55,22 @@ function ShootSetup()
     //Deactivates/Reactivates the proper scripts
     if(!shooting)
     {
-        gameObject.GetComponent(PlayerMovement).enabled = false;
-        gameObject.GetComponent(PlayerShoot).enabled = true;
-        gameObject.GetComponent(PlayerLook).enabled = false;
+        
+        move.enabled = false;
+        look.enabled = false;
         shooting = true;
+        yield WaitForSeconds(.3);
+        gameObject.GetComponent(PlayerShoot).enabled = true;
         return;
     }
     if(shooting)
     {
-        gameObject.GetComponent(PlayerShoot).enabled = false;
-        gameObject.GetComponent(PlayerMovement).enabled = true;
-        gameObject.GetComponent(PlayerLook).enabled = true;
+        
+        move.enabled = true;
+        look.enabled = true;
         shooting = false;
+        yield WaitForSeconds(.3);
+        gameObject.GetComponent(PlayerShoot).enabled = false;
         return;
     }
 }

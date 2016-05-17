@@ -8,12 +8,18 @@ var textParent : GameObject;
 var shootUI : GameObject;
 
 var preShootUI : GameObject;
+
+var player : Player;
+
+var debugText : Text;
+
+
 function Start () {
 
 }
 
 function Update () {
-
+    DebugText();
     if(Input.touchCount > 0)
     {
         
@@ -37,7 +43,7 @@ function Update () {
             //if the player presses the shoot button then 
             text.text = "SHOOT";
             textParent.SetActive(true);
-            ShootMode();
+            ShootModeUI();
         }
     }
     
@@ -49,7 +55,7 @@ function Update () {
 }
 
 
-function ShootMode()
+function ShootModeUI()
 {
     preShootUI.SetActive(!preShootUI);
     shootUI.SetActive(!shootUI);
@@ -60,4 +66,9 @@ function Display(s:String)
     text.text = s;
     textParent.SetActive(true);
     return;
+}
+
+function DebugText()
+{
+    debugText.text = "look: " + player.GetComponent(PlayerLook).enabled + "  move: " + player.GetComponent(PlayerMovement).enabled;
 }

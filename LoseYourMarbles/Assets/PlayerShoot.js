@@ -2,14 +2,27 @@
 
 var manager : GameObject;
 
+var shootLoc: Transform;
+
+
+//shot power 
 var power : float;
 
 var maxPower : float;
 
+
+
+//tracking for shooting Touch inputs
 var startPos : Vector2;
 
 var endPos : Vector2;
 
+var start : boolean;
+
+var end : boolean;
+
+
+//the rate at which the shot charges.
 
 var chargeRate : float;
 
@@ -108,21 +121,35 @@ function Update()
 {
     if(Input.touchCount >0 )
     {
-        if(Input.GetTouch(0).phase == TouchPhase.Began)
+        var touch : Touch = Input.GetTouch(0);
+        if(touch.phase == TouchPhase.Began)
         {
-            startPos = Input.GetTouch(0).position;
+            startPos = touch.position;
+            start = true;
+        }
+        if(touch.phase == TouchPhase.Ended)
+        {
+            endPos = touch.position;
+            end = true;
+        }
+    }
+
+    if(start && end)
+    {
+        if(startPos.y > endPos.y)
+        {
+            return;
         }
 
-        if(Input.GetTouch(0).phase == TouchPhase.Ended)
-        {
-            endPos = Input.GetTouch(0).position;
-        }
+       
 
-        if(startPos.x > 0 && endPos.x > 0)
-        {
-            var shooter : GameObject = Instantiate(Resources.Load("Prefabs/ShooterPrefab"), transform.position, transform.rotation);
-            shooter.GetComponent(Rigidbody).AddForce(Vector3(endPos.x-startPos.x, 0, endPos.y - startPos.y), ForceMode.Impulse);
-            gameObject.GetComponent(Player).ShootSetup();
-        }
+        var shooter : GameObject = Instantiate(Resources.Load("Prefabs/ShooterPrefab"),shootLoc.position, shootLoc.rotation);
+
+        shooter.GetComponent(Rigidbody).AddForce(Vector3((endPos.x - startPos.x)/2, 0, (endPos.y - startPos.y)));
+        
+        startPos = Vector2.zero;
+        endPos = Vector2.zero;
+        start = false;
+        end = false;
     }
 }
