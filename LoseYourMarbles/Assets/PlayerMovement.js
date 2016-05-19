@@ -24,6 +24,18 @@ function Movement()
         }
 
     }
+    if(Input.GetButton("Fire1"))
+    {
+        hit = Physics2D.OverlapPoint(Input.mousePosition);
+        if(hit.gameObject.tag == "RIGHT")
+        {
+            transform.RotateAround(Vector3.zero, Vector3(0,-1,0), 15 * Time.deltaTime);
+        }
+        if(hit.gameObject.tag == "LEFT")
+        {
+            transform.RotateAround(Vector3.zero, Vector3(0,1,0), 15 * Time.deltaTime);
+        }
+    }
     
     
 }

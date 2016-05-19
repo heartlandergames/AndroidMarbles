@@ -8,6 +8,7 @@ TagManager:
   - LEFT
   - SHOOT
   - MANAGER
+  - PLAYER
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,6 @@
 ﻿#pragma strict
 
-var manager : GameObject;
+var manager : Manager;
 
 var shooting : boolean;
 
@@ -10,14 +10,16 @@ var move : PlayerMovement;
 
 
 function Start () {
-    manager = GameObject.FindWithTag("MANAGER");
+    manager = GameObject.FindWithTag("MANAGER").GetComponent(Manager);
     look = gameObject.GetComponent(PlayerLook);
     move = gameObject.GetComponent(PlayerMovement);
-    manager.GetComponent(Tester).player = this;
 }
 
 function Update () {
-    PreShoot();
+    if(!shooting)
+    {
+        PreShoot();
+    }
 }
 
 function PreShoot()
@@ -34,7 +36,7 @@ function PreShoot()
             if(touch.phase == TouchPhase.Ended)
             {
                 ShootSetup();
-                manager.GetComponent(Tester).Display("SHOOTING ACTIVATED");
+                manager.FlashText("SHOOTING ACTIVATED");
             }
         }   
     }
@@ -45,17 +47,18 @@ function PreShoot()
         if(mouseHit.gameObject.tag=="SHOOT")
         {
             ShootSetup();
-            
+            manager.FlashText("SHOOTING ACTIVATED");
+
         }
     }
 }
 
-function ShootSetup()
+function ShootSetup() : IEnumerator
 {
     //Deactivates/Reactivates the proper scripts
     if(!shooting)
     {
-        
+        manager.ShootMode(this);
         move.enabled = false;
         look.enabled = false;
         shooting = true;
@@ -65,7 +68,7 @@ function ShootSetup()
     }
     if(shooting)
     {
-        
+        manager.ShootMode(this);
         move.enabled = true;
         look.enabled = true;
         shooting = false;

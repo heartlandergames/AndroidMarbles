@@ -54,19 +54,21 @@ function Update () {
     }
 }
 
-
+/*
 function ShootModeUI()
 {
     preShootUI.SetActive(!preShootUI);
     shootUI.SetActive(!shootUI);
 }
-
+*/
+/*
 function Display(s:String)
 {
     text.text = s;
     textParent.SetActive(true);
     return;
 }
+*/
 
 function DebugText()
 {
