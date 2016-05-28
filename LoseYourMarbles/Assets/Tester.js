@@ -43,7 +43,7 @@ function Update () {
             //if the player presses the shoot button then 
             text.text = "SHOOT";
             textParent.SetActive(true);
-            ShootModeUI();
+            //ShootModeUI();
         }
     }
     

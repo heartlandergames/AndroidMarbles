@@ -9,6 +9,8 @@ TagManager:
   - SHOOT
   - MANAGER
   - PLAYER
+  - OOB
+  - MARBLE
   layers:
   - Default
   - TransparentFX

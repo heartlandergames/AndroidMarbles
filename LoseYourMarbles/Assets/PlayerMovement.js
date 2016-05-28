@@ -31,7 +31,7 @@ function Movement()
         {
             transform.RotateAround(Vector3.zero, Vector3(0,-1,0), 15 * Time.deltaTime);
         }
-        if(hit.gameObject.tag == "LEFT")
+       else if(hit.gameObject.tag == "LEFT")
         {
             transform.RotateAround(Vector3.zero, Vector3(0,1,0), 15 * Time.deltaTime);
         }

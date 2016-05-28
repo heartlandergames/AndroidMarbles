@@ -8,6 +8,7 @@ var look : PlayerLook;
 
 var move : PlayerMovement;
 
+var inTurn : boolean;
 
 function Start () {
     manager = GameObject.FindWithTag("MANAGER").GetComponent(Manager);
@@ -16,7 +17,7 @@ function Start () {
 }
 
 function Update () {
-    if(!shooting)
+    if(inTurn)
     {
         PreShoot();
     }
@@ -50,10 +51,11 @@ function PreShoot()
             manager.FlashText("SHOOTING ACTIVATED");
 
         }
+        
     }
 }
 
-function ShootSetup() : IEnumerator
+function ShootSetup()
 {
     //Deactivates/Reactivates the proper scripts
     if(!shooting)
@@ -61,9 +63,9 @@ function ShootSetup() : IEnumerator
         manager.ShootMode(this);
         move.enabled = false;
         look.enabled = false;
-        shooting = true;
-        yield WaitForSeconds(.3);
+        WaitForSeconds(.3);
         gameObject.GetComponent(PlayerShoot).enabled = true;
+        shooting = true;
         return;
     }
     if(shooting)
@@ -71,9 +73,9 @@ function ShootSetup() : IEnumerator
         manager.ShootMode(this);
         move.enabled = true;
         look.enabled = true;
-        shooting = false;
-        yield WaitForSeconds(.3);
+        WaitForSeconds(.3);
         gameObject.GetComponent(PlayerShoot).enabled = false;
+        shooting = false;
         return;
     }
 }

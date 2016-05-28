@@ -18,11 +18,11 @@ function Update () {
 
 function ShootUICycle()
 {
-    shootUI.SetActive(!shootUI);
+    shootUI.SetActive(!shootUI.active);
 
 }
 
 function MoveUICycle()
 {
-    moveUI.SetActive(!moveUI);
+    moveUI.SetActive(!moveUI.active);
 }

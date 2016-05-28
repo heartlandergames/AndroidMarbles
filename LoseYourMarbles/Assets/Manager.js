@@ -23,6 +23,7 @@ function Start () {
     {
        players.Add(p.GetComponent(Player));
     }
+players[0].inTurn = true;
 }
 
 function Update () {
@@ -47,6 +48,7 @@ function ShootMode(p : Player)
 {
     ui.MoveUICycle();
     ui.ShootUICycle();
+    Debug.Log("Cycle");
 }
 
 function Test()
