@@ -1,6 +1,6 @@
 ﻿#pragma strict
 
-var manager : GameObject;
+var manager : Manager;
 
 var shootLoc: Transform;
 
@@ -25,7 +25,7 @@ var maxCurve : float = 10;
 
 
 function Start () {
-    manager = gameObject.FindWithTag("MANAGER");
+    manager = gameObject.FindWithTag("MANAGER").GetComponent(Manager);
 }
 
 
@@ -42,6 +42,9 @@ function Update()
 
 function PreShot()
 {
+    //waits for a touchInput to begin and end
+    //when ended, records the positions at start/end and sets both variables to true
+    //this results in Shoot() being called through an Update Check;
     if(Input.touchCount >0 )
     {
         var touch : Touch = Input.GetTouch(0);
@@ -69,52 +72,59 @@ function PreShot()
 
 function Shoot()
 {
+    //creates a shooter clone and then applies the appropriate forces from the getcurve/power functions
+    //if the touch ends below the starting point do nothing.
     if(startPos.y > endPos.y)
     {
+             
         return;
     }
 
     Debug.Log(startPos + " + " + endPos);
 
+
     var shooter : GameObject = Instantiate(Resources.Load("Prefabs/ShooterPrefab"),shootLoc.position, shootLoc.rotation);
    
-    var shotDirection : Vector3;
+    //uses the custom GetCurve/Power functions to set the x and z variables of ShotDirection to apply to the shooter with AddForce();
+    var shotDirection : Vector3 = Vector3(GetCurve(endPos.x, startPos.x), 0, GetPower(endPos.y, startPos.y));
     
-    if(endPos.x >= startPos.x )
-    {
-        shotDirection.x = ((endPos.x - startPos.x)/ Screen.width) * maxCurve;
-    }
-    else if(endPos.x < startPos.x)
-    {
-        shotDirection.x = ((startPos.x - endPos.x)/Screen.width) * -maxCurve;
-    }
+    //Applies the AddForce function using the shotDirection variable to the Shooter gameObject;      
+    shooter.GetComponent(Rigidbody).AddRelativeForce(shotDirection, ForceMode.Impulse);
 
-    shotDirection.z = ((endPos.y-startPos.y)/Screen.height)* maxPower;
-       
-    shooter.GetComponent(Rigidbody).AddForce(shotDirection, ForceMode.Impulse);
+    //Zeroes out the start and endPos variables and sets start/end to false to await a new shot.
     startPos = Vector2.zero;
     endPos = Vector2.zero;
     start = false;
     end = false;
+
+    //Tells this player to cycle the Shooting Setup.
     GetComponent(Player).ShootSetup();
+
+    //manager.WaitForTurn();
+
+
 }
+
 
 function GetPower(ey : float, sy : float) : float
 {
+    //gets the z-direction force for a shot from the starting and ending y-position of the GetTouch.
+    //divides the difference of those two by the total screen height to get the ratio of maxPower this shot should have
     var sh : int = Screen.height;
 
     var power : float;
     power = ((ey - sy) / sh) * maxPower;
-
-
-    Debug.Log("Power " + power);
-
+    
     return power;
     
 }
 
 function GetCurve(ex : float, sx : float) : float
-    {
+{
+        //Gets the x-direction to apply to the shooter from the start/endPos of the x-coordinate
+        //checks to see if the finger ended left/right of the starting position and then multiplies by negative to get left movement if necessary
+        //takes the difference in coordinate values and then divides by the total screen width to get a ratio to multiply by maxCurve
+
         var sw : int = Screen.width;
         var curve : float;
 
@@ -129,6 +139,6 @@ function GetCurve(ex : float, sx : float) : float
             return curve;
         }
         Debug.Log(curve);
-    }    
+}    
 
     

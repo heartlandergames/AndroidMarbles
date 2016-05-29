@@ -58,3 +58,40 @@ function Test()
         FlashText("Time" + Time.time);
     }
 }
+
+function WaitForTurn()
+{
+    for(var p : Player in players)
+    {
+    p.gameObject.GetComponent(PlayerShoot).enabled = false;
+    p.gameObject.GetComponent(PlayerLook).enabled = true;
+    p.gameObject.GetComponent(PlayerMovement).enabled = true;
+    }
+}
+
+function NextTurn()
+{
+    for(var p : Player in players)
+    {
+        p.inTurn = !p.inTurn;
+    }
+}
+
+function AddPoint(g:GameObject)
+{
+    var rb : Rigidbody = g.GetComponent(Rigidbody);
+    rb.isKinematic = true;
+    rb.useGravity = false;
+    g.GetComponent(MeshRenderer).enabled = false;
+
+    for(var p : Player in players)
+    {
+        if(p.inTurn)
+    {
+            g.transform.position = p.gameObject.transform.position;
+            p.points++;
+            return;
+        }
+    }
+        
+}

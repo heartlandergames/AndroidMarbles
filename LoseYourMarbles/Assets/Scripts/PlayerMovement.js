@@ -24,6 +24,7 @@ function Movement()
         }
 
     }
+    
     if(Input.GetButton("Fire1"))
     {
         hit = Physics2D.OverlapPoint(Input.mousePosition);

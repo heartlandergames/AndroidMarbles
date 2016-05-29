@@ -1,4 +1,5 @@
 ﻿#pragma strict
+import System.Collections.Generic;
 
 var manager : Manager;
 
@@ -9,6 +10,10 @@ var look : PlayerLook;
 var move : PlayerMovement;
 
 var inTurn : boolean;
+
+var points : int;
+
+var collectedMarbles : List.<GameObject> = new List.<GameObject>();
 
 function Start () {
     manager = GameObject.FindWithTag("MANAGER").GetComponent(Manager);
@@ -25,6 +30,8 @@ function Update () {
 
 function PreShoot()
 {
+    //runs while player is in turn
+    //waits for touchInput on the UI controls and calls appropriate scripts/functions
     if(Input.touchCount > 0)
     {
         var touch : Touch = Input.GetTouch(0);
