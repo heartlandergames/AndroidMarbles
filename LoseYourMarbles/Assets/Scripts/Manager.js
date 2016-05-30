@@ -95,3 +95,16 @@ function AddPoint(g:GameObject)
     }
         
 }
+
+
+function CheckForWinner()
+{
+    for(var p : Player in players)
+    {
+        if(p.points >= 7)
+    {
+            FlashText("Winner == " + p.name + players.IndexOf(p));
+            Time.timeScale =0;
+    }
+}
+}

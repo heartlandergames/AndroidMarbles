@@ -26,6 +26,7 @@ function Update () {
     {
         PreShoot();
     }
+    ShowScore();
 }
 
 function PreShoot()
@@ -87,3 +88,8 @@ function ShootSetup()
     }
 }
 
+function ShowScore()
+{
+    var pointText : Text = GameObject.FindWithTag("POINTS").GetComponent(Text);
+    pointText.text = "Points : " + points;
+}

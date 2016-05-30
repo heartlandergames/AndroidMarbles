@@ -11,6 +11,12 @@ TagManager:
   - PLAYER
   - OOB
   - MARBLE
+  - POINTS
+  - MAINSCREEN
+  - OPTIONSSCREEN
+  - STORESCREEN
+  - PLAYSCREEN
+  - SCREENTEXT
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,42 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   LoseYourMarbles/Assets/Columned.unity
+#	modified:   LoseYourMarbles/Assets/MainScreen.unity
+#	new file:   LoseYourMarbles/Assets/MenuIcon.psd
+#	new file:   LoseYourMarbles/Assets/MenuIcon.psd.meta
+#	modified:   LoseYourMarbles/Assets/Scripts/ButtonsMainScreen.js
+#	modified:   LoseYourMarbles/Assets/Scripts/Manager.js
+#	modified:   LoseYourMarbles/Assets/Scripts/Player.js
+#	modified:   LoseYourMarbles/Assets/Scripts/UIScript.js
+#	modified:   LoseYourMarbles/Library/CurrentMaximizeLayout.dwlt
+#	modified:   LoseYourMarbles/Library/InspectorExpandedItems.asset
+#	modified:   LoseYourMarbles/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+#	modified:   LoseYourMarbles/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll.mdb
+#	modified:   LoseYourMarbles/Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll
+#	modified:   LoseYourMarbles/Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll.mdb
+#	modified:   LoseYourMarbles/Library/ScriptAssemblies/Assembly-UnityScript.dll
+#	modified:   LoseYourMarbles/Library/ScriptAssemblies/Assembly-UnityScript.dll.mdb
+#	modified:   LoseYourMarbles/Library/assetDatabase3
+#	modified:   LoseYourMarbles/Library/metadata/00/00000000000000003000000000000000
+#	modified:   LoseYourMarbles/Library/metadata/00/00000000000000004000000000000000
+#	modified:   LoseYourMarbles/Library/metadata/00/00000000000000006100000000000000
+#	modified:   LoseYourMarbles/Library/metadata/07/07bbb538f7073744c8bd4b372193f510
+#	new file:   LoseYourMarbles/Library/metadata/11/1151f0ac19feb8a4db5f9082c1cb3b85
+#	new file:   LoseYourMarbles/Library/metadata/11/1151f0ac19feb8a4db5f9082c1cb3b85.info
+#	modified:   LoseYourMarbles/Library/metadata/6f/6fc8624f9b67ca74a8103407fce3592c
+#	modified:   LoseYourMarbles/Library/metadata/c2/c2b233f5b1cbd064ca7743042303a1eb
+#	modified:   LoseYourMarbles/Library/metadata/fd/fd43554bcadc9114bb77369b9bf09755
+#	modified:   LoseYourMarbles/Library/shadercompiler-UnityShaderCompiler.exe0.log
+#	modified:   LoseYourMarbles/ProjectSettings/TagManager.asset
+#
+# Changes not staged for commit:
+#	modified:   LoseYourMarbles/Library/CurrentLayout.dwlt
+#	modified:   LoseYourMarbles/Library/LastSceneManagerSetup.txt
+#	modified:   LoseYourMarbles/Library/expandedItems
+#
+

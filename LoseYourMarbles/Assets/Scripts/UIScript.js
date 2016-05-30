@@ -5,7 +5,7 @@ var shootUI : GameObject;
 
 var moveUI : GameObject;
 
-
+var backButton : GameObject;
 
 
 function Start () {
@@ -25,4 +25,9 @@ function ShootUICycle()
 function MoveUICycle()
 {
     moveUI.SetActive(!moveUI.active);
+}
+
+function BackButtonCycle()
+{
+    backButton.SetActive(!backButton.active);
 }
