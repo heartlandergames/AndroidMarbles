@@ -90,9 +90,11 @@ function AddPoint(g:GameObject)
     {
             g.transform.position = p.gameObject.transform.position;
             p.points++;
+            CheckForWinner();
             return;
         }
-    }
+}
+
         
 }
 

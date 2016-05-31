@@ -38,6 +38,7 @@ function QuitGame()
 function HomeScreen()
 {
     SceneManager.LoadScene("MainScreen");
+    Time.timeScale =1;
 }
 
 function PlayScreen()
