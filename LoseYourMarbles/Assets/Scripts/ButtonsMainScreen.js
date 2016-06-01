@@ -41,6 +41,12 @@ function HomeScreen()
     Time.timeScale =1;
 }
 
+function MainScreen()
+{
+    CloseScreens();
+    mainScreen.SetActive(true);
+}
+
 function PlayScreen()
 {
     CloseScreens();
