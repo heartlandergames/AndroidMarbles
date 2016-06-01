@@ -17,6 +17,7 @@ TagManager:
   - STORESCREEN
   - PLAYSCREEN
   - SCREENTEXT
+  - BUTTON
   layers:
   - Default
   - TransparentFX

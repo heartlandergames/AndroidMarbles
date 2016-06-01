@@ -31,9 +31,9 @@ PlayerSettings:
   displayResolutionDialog: 1
   iosAllowHTTPDownload: 1
   allowedAutorotateToPortrait: 1
-  allowedAutorotateToPortraitUpsideDown: 1
-  allowedAutorotateToLandscapeRight: 1
-  allowedAutorotateToLandscapeLeft: 1
+  allowedAutorotateToPortraitUpsideDown: 0
+  allowedAutorotateToLandscapeRight: 0
+  allowedAutorotateToLandscapeLeft: 0
   useOSAutorotation: 1
   use32BitDisplayBuffer: 1
   disableDepthAndStencilBuffers: 0
@@ -437,8 +437,12 @@ PlayerSettings:
   boolPropertyNames:
   - XboxOne::enus
   XboxOne::enus: 1
-  stringPropertyNames: []
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  stringPropertyNames:
+  - Build_ServiceEnabled::Build_ServiceEnabled
+  - UNet_ServiceEnabled::UNet_ServiceEnabled
+  Build_ServiceEnabled::Build_ServiceEnabled: True
+  UNet_ServiceEnabled::UNet_ServiceEnabled: True
+  cloudProjectId: e8e19a36-f6d0-4d6f-a477-be58a711d140
+  projectName: LoseYourMarblesAndroid
+  organizationId: c-griffin
   cloudEnabled: 0
