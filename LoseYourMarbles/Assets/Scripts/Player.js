@@ -45,22 +45,14 @@ function PreShoot()
             if(touch.phase == TouchPhase.Ended)
             {
                 ShootSetup();
-                manager.FlashText("SHOOTING ACTIVATED");
+                //manager.FlashText("SHOOTING ACTIVATED");
             }
         }   
     }
 
-    if(Input.GetButtonDown("Fire1"))
-    {
-        var mouseHit : Collider2D = Physics2D.OverlapPoint(Input.mousePosition);
-        if(mouseHit.gameObject.tag=="SHOOT")
-        {
-            ShootSetup();
-            manager.FlashText("SHOOTING ACTIVATED");
-
-        }
+    
         
-    }
+    
 }
 
 function ShootSetup()

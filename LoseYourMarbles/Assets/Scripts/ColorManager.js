@@ -10,8 +10,10 @@ var accentList : List.<Color> = new List.<Color>();
 
 var choice : int;
 function Start () {
-    choice = Random.Range(0, mainList.Count-1);
 
+    Debug.Log(choice + "  1");
+    choice = Random.Range(0, mainList.Count-1);
+    Debug.Log(choice + "  2");
    
 
     Camera.main.backgroundColor = mainList[choice];

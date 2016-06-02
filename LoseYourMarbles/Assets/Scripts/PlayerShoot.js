@@ -32,8 +32,10 @@ function Start () {
 
 function Update()
 {
-    PreShot();  
-
+    if(manager.CheckForMovement())
+    {
+        PreShot();  
+    }
     if(start && end)
     {
         Shoot();
@@ -59,15 +61,7 @@ function PreShot()
             end = true;
         }
     }
-    /*
-    if(Input.GetButtonDown("Fire1"))
-    {
-        startPos = Vector2(Screen.width/2 ,0);
-        endPos = Vector2(0,Screen.height);
-        start = true;
-        end = true;
-        Debug.Log(startPos + " + " + endPos);
-    }*/
+   
 }
 
 function Shoot()
@@ -97,9 +91,12 @@ function Shoot()
     start = false;
     end = false;
 
+    
+
     //Tells this player to cycle the Shooting Setup.
     GetComponent(Player).ShootSetup();
 
+  
     //manager.WaitForTurn();
 
 

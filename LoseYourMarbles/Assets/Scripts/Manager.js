@@ -4,13 +4,14 @@ import System.Collections.Generic;
 
 var ui : UIScript;
 
-
+var inShot : boolean;
 
 var text : GameObject;
 
 var textDisplay :boolean;
 
 var players : List.<Player> = new List.<Player>();
+
 
 
 function Start () {
@@ -23,11 +24,19 @@ function Start () {
     {
        players.Add(p.GetComponent(Player));
     }
-players[0].inTurn = true;
+    players[0].inTurn = true;
 }
 
 function Update () {
-    Test();
+    if(inShot)
+    {
+        if(CheckForMovement)
+        {
+            FlashText("MovementStopped/NextTurn");
+            //NextTurn();
+            inShot = false;
+        }
+    }
 }
 
 function FlashText(s : String)
@@ -109,4 +118,49 @@ function CheckForWinner()
             Time.timeScale =0;
     }
 }
+}
+
+function CheckForMovement() : boolean
+{
+    //Add all shooters and marbles into a list and then check those gameObjects' rigidbodies for movement
+    //if below threshold, set their velocities to zero;
+    var marbArray : GameObject[] = GameObject.FindGameObjectsWithTag("MARBLE");
+    var shootArray : GameObject[] = GameObject.FindGameObjectsWithTag("SHOOTER");
+    var allList : List.<GameObject> = new List.<GameObject>();
+    
+    //Get Marbles and add to list
+    for(var m : GameObject in marbArray)
+    {
+        allList.Add(m);
+    }
+    //GetShooters and add to list
+    for(var s : GameObject in shootArray)
+    {
+        allList.Add(s);
+    }
+   
+    //counting variable to check against allList.Count
+    var x : int;
+
+    for(var g : GameObject in allList)
+    {
+        var rb : Rigidbody = g.GetComponent(Rigidbody);
+
+        if(rb.velocity.magnitude <= 0.1)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            x++;
+        }
+    }
+
+    if(x >= allList.Count)
+    {
+        return true;
+    }
+    else if (x< allList.Count)
+    {
+        return false;
+    }
+
 }

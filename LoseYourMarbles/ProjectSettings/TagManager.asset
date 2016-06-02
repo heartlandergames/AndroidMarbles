@@ -18,6 +18,7 @@ TagManager:
   - PLAYSCREEN
   - SCREENTEXT
   - BUTTON
+  - SHOOTER
   layers:
   - Default
   - TransparentFX
