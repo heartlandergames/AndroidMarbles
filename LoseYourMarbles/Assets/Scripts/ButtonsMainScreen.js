@@ -30,6 +30,11 @@ function LoadColumned()
     SceneManager.LoadScene("Columned");
 }
 
+function LoadLag()
+{
+    SceneManager.LoadScene("LagScene");
+}
+
 function QuitGame()
 {
     Application.Quit();

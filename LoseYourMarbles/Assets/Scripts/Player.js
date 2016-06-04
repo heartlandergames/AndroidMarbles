@@ -3,6 +3,11 @@ import System.Collections.Generic;
 
 var manager : Manager;
 
+//has the player shot a lag shot yet?
+//set and read by the LagManager
+var lagged : boolean;
+
+
 var shooting : boolean;
 
 var look : PlayerLook;
@@ -13,7 +18,7 @@ var inTurn : boolean;
 
 var points : int;
 
-var collectedMarbles : List.<GameObject> = new List.<GameObject>();
+var spoils : List.<GameObject> = new List.<GameObject>();
 
 function Start () {
     manager = GameObject.FindWithTag("MANAGER").GetComponent(Manager);
