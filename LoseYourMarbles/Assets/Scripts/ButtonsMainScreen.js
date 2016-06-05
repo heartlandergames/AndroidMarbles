@@ -9,6 +9,9 @@ var optionsScreen : GameObject;
 var storeScreen : GameObject;
 var playScreen: GameObject;
 
+var playerOptionsScreen : GameObject;
+
+
 var screenList : List.<GameObject> = new List.<GameObject>();
 
 function Start () {
@@ -18,6 +21,7 @@ function Start () {
     screenList.Add(optionsScreen);
     screenList.Add(storeScreen);
     screenList.Add(playScreen);
+    screenList.Add(playerOptionsScreen);
 
 }
 
@@ -44,6 +48,12 @@ function HomeScreen()
 {
     SceneManager.LoadScene("MainScreen");
     Time.timeScale =1;
+}
+
+function PlayerOptionsScreen()
+{
+    CloseScreens();
+    playerOptionsScreen.SetActive(true);
 }
 
 function MainScreen()
